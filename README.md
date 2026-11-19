@@ -38,7 +38,7 @@ Edit `backend/.env` as needed:
 
 ```env
 PORT=5000
-MONGODB_URI=mongodb://localhost:27017/dreamhome3d
+MONGODB_URI=mongodb://localhost:27017/
 JWT_SECRET=replace_this_with_a_long_random_secret
 ```
 
