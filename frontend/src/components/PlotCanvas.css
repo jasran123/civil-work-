@@ -1,0 +1,252 @@
+.plot-canvas {
+  color: #232b31;
+  min-width: 0;
+}
+
+.plot-canvas__tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.6rem;
+  padding: 0.75rem;
+  border: 1px solid #dfe4e3;
+  border-bottom: 0;
+  border-radius: 0.85rem 0.85rem 0 0;
+  background: #fff;
+}
+
+.plot-canvas__toolgroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  padding-right: 0.6rem;
+  border-right: 1px solid #e5e7eb;
+}
+
+.plot-canvas__zoom {
+  margin-left: auto;
+  padding-right: 0;
+  border-right: 0;
+}
+
+.plot-canvas__tool {
+  display: inline-flex;
+  min-height: 2.25rem;
+  min-width: 2.25rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid transparent;
+  border-radius: 0.4rem;
+  background: #fff;
+  color: #29363c;
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.plot-canvas__tool:not(:disabled):hover {
+  background: #f2f5f4;
+}
+
+.plot-canvas__tool[aria-pressed='true'] {
+  border-color: #a3c6b9;
+  background: #e6f1ed;
+  color: #1d5b49;
+}
+
+.plot-canvas__tool:not(:disabled):focus-visible {
+  outline: 2px solid #17664f;
+  outline-offset: 1px;
+}
+
+.plot-canvas__tool:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.plot-canvas__drawing {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #dfe4e3;
+  border-radius: 0 0 0.85rem 0.85rem;
+  background: #f3f7f6;
+}
+
+.plot-canvas__svg {
+  display: block;
+  width: 100%;
+  height: clamp(21rem, 40vw, 32rem);
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+
+.plot-canvas__svg.is-dragging {
+  cursor: grabbing;
+}
+
+.plot-canvas__svg--insert {
+  cursor: crosshair;
+}
+
+.plot-canvas__grid {
+  fill: none;
+  stroke: #dce7e3;
+  stroke-width: 1;
+}
+
+.plot-canvas__grid--5 {
+  stroke: #c9dad4;
+}
+
+.plot-canvas__parcel {
+  fill: #dfefe5;
+  fill-opacity: 0.64;
+}
+
+.plot-canvas__edge {
+  fill: none;
+  stroke: #2e6854;
+  stroke-width: 2;
+}
+
+.plot-canvas__front .plot-canvas__edge {
+  stroke: #93621c;
+  stroke-width: 3.5;
+}
+
+.plot-canvas__edge.plot-canvas__edge--wall {
+  stroke-width: 5;
+}
+
+.plot-canvas__gate-gap {
+  stroke: #f3f7f6;
+  stroke-width: 6;
+}
+
+.plot-canvas__gate {
+  stroke: #93621c;
+  stroke-width: 3;
+  stroke-dasharray: 4 3;
+}
+
+.plot-canvas__dimension,
+.plot-canvas__corner-label,
+.plot-canvas__item-label,
+.plot-canvas__reference text {
+  fill: #253930;
+  stroke: #f3f7f6;
+  stroke-width: 3px;
+  stroke-linejoin: round;
+  paint-order: stroke;
+  pointer-events: none;
+  text-anchor: middle;
+  dominant-baseline: central;
+  font-size: 0.875rem;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+}
+
+.plot-canvas__front .plot-canvas__dimension {
+  fill: #79500e;
+}
+
+.plot-canvas__corner-hit {
+  fill: transparent;
+  outline: 0;
+}
+
+.plot-canvas__svg--edit .plot-canvas__corner-hit[role='button'],
+.plot-canvas__svg--edit .plot-canvas__footprint[role='button'] {
+  cursor: move;
+}
+
+.plot-canvas__corner {
+  fill: #fff;
+  stroke: #2e6854;
+  stroke-width: 2;
+  pointer-events: none;
+}
+
+.plot-canvas__corner.is-active,
+.plot-canvas__corner-hit:hover + .plot-canvas__corner,
+.plot-canvas__corner-hit:focus-visible + .plot-canvas__corner {
+  fill: #17664f;
+  stroke: #fff;
+}
+
+.plot-canvas__corner-label,
+.plot-canvas__reference text {
+  font-size: 0.8125rem;
+}
+
+.plot-canvas__item {
+  --feature-fill: #c9dcf0;
+  --feature-stroke: #3e6689;
+}
+
+.plot-canvas__item--garden {
+  --feature-fill: #a8c98e;
+  --feature-stroke: #4d7035;
+}
+
+.plot-canvas__item--parking {
+  --feature-fill: #ddd9d2;
+  --feature-stroke: #6b6357;
+}
+
+.plot-canvas__item--wall {
+  --feature-fill: #d9c9b7;
+  --feature-stroke: #775a41;
+}
+
+.plot-canvas__footprint {
+  fill: var(--feature-fill);
+  stroke: var(--feature-stroke);
+  stroke-width: 1.5px;
+  outline: 0;
+}
+
+.plot-canvas__item.is-active .plot-canvas__footprint,
+.plot-canvas__footprint[role='button']:hover,
+.plot-canvas__footprint:focus-visible {
+  stroke: #172e41;
+  stroke-width: 2.5px;
+}
+
+.plot-canvas__item-label {
+  stroke: var(--feature-fill);
+}
+
+.plot-canvas__reference {
+  fill: #344f45;
+  pointer-events: none;
+}
+
+.plot-canvas__scale {
+  fill: none;
+  stroke: #344f45;
+  stroke-width: 1.5px;
+}
+
+.plot-canvas__empty {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(calc(100% - 2rem), 21rem);
+  transform: translate(-50%, -50%);
+  padding: 0.75rem 1rem;
+  border: 1px solid #dfe4e3;
+  border-radius: 0.6rem;
+  background: #fff;
+  text-align: center;
+  pointer-events: none;
+}
+
+.plot-canvas__hint {
+  margin-top: 0.5rem;
+  color: #41534b;
+  font-size: 0.875rem;
+}
